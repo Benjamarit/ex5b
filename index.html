@@ -36,7 +36,7 @@
             $("button").click(function(){
                 var t = $('#temp').val();//celsius
                 var u = $('#unit').val();
-                var msg; // Declare msg here
+                var msg; 
 
                 function validateTemperature(t) {
                     if(isNaN(t)){
@@ -59,7 +59,8 @@
                             result = t1 * (9/5) + 32;
                             break;
                         case "K":
-                            result = parseFloat(t1) + 273.15; 
+                            result = parseFloat(t1) + 273.15;
+							break; 
                         case "R":
                             result = t1 * (4/5);
                             break;
@@ -67,7 +68,11 @@
                             result = null;
                     }
                     return result; 
-                } 
+                }
+				if(validateTemperature(t)) {
+            		var convertedTemp = convertTemperature(parseFloat(t), u);
+            		$(result).html("Temperature is " + convertedTemp + " in " + u)
+        		} 
             });
         });
     </script>
